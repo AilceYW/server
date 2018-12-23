@@ -1,0 +1,96 @@
+# 激活环境配置--激活开发环境
+#spring:
+#  profiles:
+#    active: dev
+    
+---
+# 开发环境配置
+spring:
+#  profiles: dev
+  application:
+    name:
+  # 文件上传SIZE限制
+  servlet:
+    multipart:
+      max-file-size: 10240MB
+      max-request-size: 10240MB
+  # 数据库与连接池配置
+  datasource:
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: root
+    password: root
+    driver_class_namel: oracle.jdbc.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    max_active: 20
+    initial_size: 1
+    min_idle: 3
+    max_wait: 60000
+    time_between_eviction_runs_millis: 60000
+    min_evictable_idle_time_millis: 300000
+    test_while_idle: true
+    test_on_borrow: false
+    test_on_return: false
+    poolPreparedStatements: true
+# 服务端口    
+server:
+  port: 10002
+
+# 业务个性化配置
+
+
+debug: true
+# 部署环境配置
+#server:
+#  port: 10000
+#spring:
+#  profiles: prod
+#
+#
+#
+#---
+## 测试环境配置
+#server:
+#  port: 10000
+#spring:
+#  profiles: test
+
+
+#文件上傳與下載
+upload:
+  filePath:
+    downloadPath: g:/uplodFile
+    #2003版word转html图片路径
+    imgPath: g:\uplodFile\img\word\media\
+    path: file:g:\ftp\word\media\
+    #网络获取路径
+    httpImagePath: http://192.168.1.141:10002/upload/image/
+    #2007版word转html图片路径
+    imagePath: g:\uplodFile\img
+
+#ftp文件地址
+ftp:
+  host: 192.168.1.141
+  port: 21
+  username: ftpFile
+  password: 123456
+  root_path: /ftp/
+  img_path: /word/media/
+  ftp_img_htt_path: ftp://ftpFile:123456@192.168.1.141:21/ftp/image/
+  path: file:g:\FTP\word\media\
+#  path:
+#    #上传html地址
+#    uploadhtmlPath:
+#    imgPaht:
+#    #下载到本地地址
+#    downloadhtmlpath:
+
+    #磁盘存储路径
+ckeditor:
+  storage:
+    image:
+      path: file:g:\uplodFile\img\word\media\
+      url: http://192.168.1.141:10002/public/image/
+
+#静态资源地址
+url:
+  path: /static/

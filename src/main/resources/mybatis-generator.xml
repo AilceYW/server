@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <classPathEntry location="e:\ojdbc6.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="[e|E]xample$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--使用oracle数据库的ulr最好使用SID来连接-->
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:orcl" userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!--<javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>-->
+        <!-- java类型处理器
+         用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+         注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型；
+             -->
+        <!--
+                true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                    scale>0;length>18：使用BigDecimal;
+                    scale=0;length[10,18]：使用Long；
+                    scale=0;length[5,9]：使用Integer；
+                    scale=0;length<5：使用Short；
+             -->
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="test.serverframe.armc.server.manager.domain"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+
+        <!-- 自动生成mapper接口, ANNOTATEDMAPPER(注解) -->
+        <javaClientGenerator type="ANNOTATEDMAPPER"
+                             targetPackage="test.serverframe.armc.server.manager.dao.mapper"
+                             implementationPackage="test.serverframe.armc.server.manager.dao.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--   <table tableName="yew_pz_qbcl_zllx" domainObjectName="DatumEnclosure"></table>-->
+        <!--资料表-->
+        <table tableName="qb_gywb_zl" domainObjectName="Datum"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <!--资料附件表-->
+        <table tableName="qb_gywb_zlfj" domainObjectName="DatumAccessory"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <!--资料正文表-->
+        <table tableName="qb_gywb_zlzw" domainObjectName="DatumText"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <!--资料分类表-->
+        <table tableName="yew_qb_cl_zlfl" domainObjectName="DatumType"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <!--资料引用表-->
+        <table tableName="yew_qb_cl_zlyygl" domainObjectName="DatumReferencingAssociation"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <!--资料状态表-->
+        <table tableName="yew_qb_cl_zlzt" domainObjectName="DatumState"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+    </context>
+</generatorConfiguration>  

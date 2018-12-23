@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="INFO"/>
+    <!-- 自动化智能分析任务日志级别 包名-->
+    <logger name="test.serverframe.armc.server.manager.dao" level="DEBUG"/>
+    <logger name="test.serverframe.armc.server.manager.controller" level="DEBUG"/>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>console - %d{yyyy-MM-dd HH:mm:ss} {%thread} %-5level %logger - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+</configuration>
